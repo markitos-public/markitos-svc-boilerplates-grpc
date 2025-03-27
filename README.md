@@ -1,4 +1,4 @@
-# 🚀 Markitos SVC Boilerplates
+# 🚀 Markitos SVC Boilerplates GRPC
 
 ¡Bienvenido a **Markitos SVC Boilerplates**! Este proyecto es un conjunto de plantillas y herramientas diseñadas para acelerar el desarrollo de servicios backend con las mejores prácticas de DevSecOps. 🥷
 
