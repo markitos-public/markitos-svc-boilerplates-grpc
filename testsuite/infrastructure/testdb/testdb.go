@@ -6,9 +6,10 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/markitos-es/markitos-svc-boilerplates-grpc/infrastructure/configuration"
-	"github.com/markitos-es/markitos-svc-boilerplates-grpc/infrastructure/database"
-	"github.com/markitos-es/markitos-svc-boilerplates-grpc/internal/domain"
+	"markitos-svc-boilerplates-grpc/infrastructure/configuration"
+	"markitos-svc-boilerplates-grpc/infrastructure/database"
+	"markitos-svc-boilerplates-grpc/internal/domain"
+
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )

@@ -4,11 +4,11 @@ import (
 	"os"
 	"testing"
 
-	"github.com/markitos-es/markitos-svc-boilerplates-grpc/internal/domain"
-	internal_test "github.com/markitos-es/markitos-svc-boilerplates-grpc/testsuite/internal"
+	"markitos-svc-boilerplates-grpc/internal/domain"
+	internal_test "markitos-svc-boilerplates-grpc/testsuite/internal"
 )
 
-type MockSpyBoilerRepository struct {
+type MockSpyBoilerplateRepository struct {
 	LastCreatedBoilerplateName     *string
 	LastDeleteBoilerplateId        *string
 	LastOneBoilerplateId           *string
@@ -20,8 +20,8 @@ type MockSpyBoilerRepository struct {
 	LastSearchHaveBeenCalled       bool
 }
 
-func NewMockSpyBoilerRepository() *MockSpyBoilerRepository {
-	return &MockSpyBoilerRepository{
+func NewMockSpyBoilerplateRepository() *MockSpyBoilerplateRepository {
+	return &MockSpyBoilerplateRepository{
 		LastCreatedBoilerplateName:     nil,
 		LastDeleteBoilerplateId:        nil,
 		LastOneBoilerplateId:           nil,
@@ -34,13 +34,13 @@ func NewMockSpyBoilerRepository() *MockSpyBoilerRepository {
 	}
 }
 
-func (m *MockSpyBoilerRepository) Create(boilerplate *domain.Boilerplate) error {
+func (m *MockSpyBoilerplateRepository) Create(boilerplate *domain.Boilerplate) error {
 	m.LastCreatedBoilerplateName = &boilerplate.Name
 
 	return nil
 }
 
-func (m *MockSpyBoilerRepository) CreateHaveBeenCalledWith(boilerplateName *string) bool {
+func (m *MockSpyBoilerplateRepository) CreateHaveBeenCalledWith(boilerplateName *string) bool {
 	var result bool = m.LastCreatedBoilerplateName != nil && *m.LastCreatedBoilerplateName == *boilerplateName
 
 	m.LastCreatedBoilerplateName = nil
@@ -48,14 +48,14 @@ func (m *MockSpyBoilerRepository) CreateHaveBeenCalledWith(boilerplateName *stri
 	return result
 }
 
-func (m *MockSpyBoilerRepository) Delete(id *domain.BoilerplateId) error {
+func (m *MockSpyBoilerplateRepository) Delete(id *domain.BoilerplateId) error {
 	value := id.Value()
 	m.LastDeleteBoilerplateId = &value
 
 	return nil
 }
 
-func (m *MockSpyBoilerRepository) DeleteHaveBeenCalledWith(boilerplateId *string) bool {
+func (m *MockSpyBoilerplateRepository) DeleteHaveBeenCalledWith(boilerplateId *string) bool {
 	var result bool = m.LastDeleteBoilerplateId != nil && *m.LastDeleteBoilerplateId == *boilerplateId
 
 	m.LastDeleteBoilerplateId = nil
@@ -63,7 +63,7 @@ func (m *MockSpyBoilerRepository) DeleteHaveBeenCalledWith(boilerplateId *string
 	return result
 }
 
-func (m *MockSpyBoilerRepository) Update(boilerplate *domain.Boilerplate) error {
+func (m *MockSpyBoilerplateRepository) Update(boilerplate *domain.Boilerplate) error {
 	m.LastUpdateHaveBeenCalled = true
 	m.LastUpdatedBoilerplateId = &boilerplate.Id
 	m.LastUpdatedBoilerplateName = &boilerplate.Name
@@ -72,7 +72,7 @@ func (m *MockSpyBoilerRepository) Update(boilerplate *domain.Boilerplate) error 
 	return nil
 }
 
-func (m *MockSpyBoilerRepository) UpdateHaveBeenCalledWith(id, name string) bool {
+func (m *MockSpyBoilerplateRepository) UpdateHaveBeenCalledWith(id, name string) bool {
 	var matchCalled bool = m.LastUpdateHaveBeenCalled
 	var matchId bool = *m.LastUpdatedBoilerplateId == id
 	var matchName bool = *m.LastUpdatedBoilerplateName == name
@@ -84,7 +84,7 @@ func (m *MockSpyBoilerRepository) UpdateHaveBeenCalledWith(id, name string) bool
 	return matchCalled && matchId && matchName
 }
 
-func (m *MockSpyBoilerRepository) UpdateHaveBeenCalled() bool {
+func (m *MockSpyBoilerplateRepository) UpdateHaveBeenCalled() bool {
 	var matchCalled bool = m.LastUpdateHaveBeenCalled
 
 	m.LastUpdateHaveBeenCalled = false
@@ -94,7 +94,7 @@ func (m *MockSpyBoilerRepository) UpdateHaveBeenCalled() bool {
 	return matchCalled
 }
 
-func (m *MockSpyBoilerRepository) UpdateHaveBeenCalledOneWith(id string) bool {
+func (m *MockSpyBoilerplateRepository) UpdateHaveBeenCalledOneWith(id string) bool {
 	var matchId bool = *m.LastOneForUpdatedBoilerplateId == id
 
 	m.LastOneForUpdatedBoilerplateId = nil
@@ -102,14 +102,14 @@ func (m *MockSpyBoilerRepository) UpdateHaveBeenCalledOneWith(id string) bool {
 	return matchId
 }
 
-func (m *MockSpyBoilerRepository) One(id *domain.BoilerplateId) (*domain.Boilerplate, error) {
+func (m *MockSpyBoilerplateRepository) One(id *domain.BoilerplateId) (*domain.Boilerplate, error) {
 	value := id.Value()
 	m.LastOneBoilerplateId = &value
 
 	return internal_test.NewRandomBoilerplateWithCustomId(id), nil
 }
 
-func (m *MockSpyBoilerRepository) OneHaveBeenCalledWith(boilerplateId *string) bool {
+func (m *MockSpyBoilerplateRepository) OneHaveBeenCalledWith(boilerplateId *string) bool {
 	var result bool = m.LastOneBoilerplateId != nil && *m.LastOneBoilerplateId == *boilerplateId
 
 	m.LastOneBoilerplateId = nil
@@ -117,20 +117,20 @@ func (m *MockSpyBoilerRepository) OneHaveBeenCalledWith(boilerplateId *string) b
 	return result
 }
 
-func (m *MockSpyBoilerRepository) All() ([]*domain.Boilerplate, error) {
+func (m *MockSpyBoilerplateRepository) All() ([]*domain.Boilerplate, error) {
 	m.LastAllHaveBeenCalled = true
 
 	return nil, nil
 }
 
-func (m *MockSpyBoilerRepository) AllHaveBeenCalled() bool {
+func (m *MockSpyBoilerplateRepository) AllHaveBeenCalled() bool {
 	result := m.LastAllHaveBeenCalled
 	m.LastAllHaveBeenCalled = false
 
 	return result
 }
 
-func (m *MockSpyBoilerRepository) SearchAndPaginate(
+func (m *MockSpyBoilerplateRepository) SearchAndPaginate(
 	searchTerm string,
 	pageNumber int,
 	pageSize int) ([]*domain.Boilerplate, error) {
@@ -139,7 +139,7 @@ func (m *MockSpyBoilerRepository) SearchAndPaginate(
 	return nil, nil
 }
 
-func (m *MockSpyBoilerRepository) SearchHaveBeenCalled() bool {
+func (m *MockSpyBoilerplateRepository) SearchHaveBeenCalled() bool {
 	result := m.LastSearchHaveBeenCalled
 
 	m.LastSearchHaveBeenCalled = false
@@ -147,10 +147,10 @@ func (m *MockSpyBoilerRepository) SearchHaveBeenCalled() bool {
 	return result
 }
 
-var repository *MockSpyBoilerRepository
+var repository *MockSpyBoilerplateRepository
 
 func TestMain(m *testing.M) {
-	repository = NewMockSpyBoilerRepository()
+	repository = NewMockSpyBoilerplateRepository()
 
 	os.Exit(m.Run())
 }

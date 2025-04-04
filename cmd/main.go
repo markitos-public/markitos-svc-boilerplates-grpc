@@ -10,10 +10,11 @@ import (
 	"sync"
 	"syscall"
 
-	"github.com/markitos-es/markitos-svc-boilerplates-grpc/infrastructure/configuration"
-	"github.com/markitos-es/markitos-svc-boilerplates-grpc/infrastructure/database"
-	"github.com/markitos-es/markitos-svc-boilerplates-grpc/infrastructure/gapi"
-	"github.com/markitos-es/markitos-svc-boilerplates-grpc/internal/domain"
+	"markitos-svc-boilerplates-grpc/infrastructure/configuration"
+	"markitos-svc-boilerplates-grpc/infrastructure/database"
+	"markitos-svc-boilerplates-grpc/infrastructure/gapi"
+	"markitos-svc-boilerplates-grpc/internal/domain"
+
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/reflection"
 	"gorm.io/driver/postgres"

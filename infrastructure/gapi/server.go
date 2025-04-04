@@ -4,7 +4,8 @@ import (
 	"errors"
 	"strings"
 
-	"github.com/markitos-es/markitos-svc-boilerplates-grpc/internal/domain"
+	"markitos-svc-boilerplates-grpc/internal/domain"
+
 	codes "google.golang.org/grpc/codes"
 	"google.golang.org/protobuf/types/known/timestamppb"
 )

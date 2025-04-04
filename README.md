@@ -48,7 +48,7 @@ Este repositorio contiene boilerplates para servicios backend que incluyen:
 1. Clona este repositorio:
 
     ```bash
-    git clone https://github.com/markitos-es/markitos-svc-boilerplates-grpc.git
+    git clone https://markitos-svc-boilerplates-grpc.git
     cd markitos-svc-boilerplates-grpc
     ```
 

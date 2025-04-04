@@ -4,10 +4,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/markitos-es/markitos-svc-boilerplates-grpc/infrastructure/database"
-	"github.com/markitos-es/markitos-svc-boilerplates-grpc/internal/domain"
-	"github.com/markitos-es/markitos-svc-boilerplates-grpc/testsuite/infrastructure/testdb"
-	internal_test "github.com/markitos-es/markitos-svc-boilerplates-grpc/testsuite/internal"
+	"markitos-svc-boilerplates-grpc/infrastructure/database"
+	"markitos-svc-boilerplates-grpc/internal/domain"
+	"markitos-svc-boilerplates-grpc/testsuite/infrastructure/testdb"
+	internal_test "markitos-svc-boilerplates-grpc/testsuite/internal"
+
 	"github.com/stretchr/testify/require"
 )
 
@@ -55,7 +56,7 @@ func TestBoilerplateOne(t *testing.T) {
 	require.NoError(t, err)
 }
 
-func TestBoilerUpdate(t *testing.T) {
+func TestBoilerplateUpdate(t *testing.T) {
 	var boilerplate *domain.Boilerplate = internal_test.NewRandomBoilerplate()
 	testdb.GetRepository().Create(boilerplate)
 

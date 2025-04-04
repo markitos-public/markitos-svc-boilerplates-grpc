@@ -3,12 +3,13 @@ package services_test
 import (
 	"testing"
 
-	"github.com/markitos-es/markitos-svc-boilerplates-grpc/internal/domain"
-	"github.com/markitos-es/markitos-svc-boilerplates-grpc/internal/services"
+	"markitos-svc-boilerplates-grpc/internal/domain"
+	"markitos-svc-boilerplates-grpc/internal/services"
+
 	"github.com/stretchr/testify/assert"
 )
 
-func TestCanUpdateABoiler(t *testing.T) {
+func TestCanUpdateABoilerplate(t *testing.T) {
 	var request services.BoilerplateUpdateRequest = services.BoilerplateUpdateRequest{
 		Id:   domain.UUIDv4(),
 		Name: domain.RandomPersonalName(),

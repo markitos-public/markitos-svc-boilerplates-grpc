@@ -1,6 +1,6 @@
 package services
 
-import "github.com/markitos-es/markitos-svc-boilerplates-grpc/internal/domain"
+import "markitos-svc-boilerplates-grpc/internal/domain"
 
 type BoilerplateAllResponse struct {
 	Data []*domain.Boilerplate `json:"data"`

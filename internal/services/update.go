@@ -1,6 +1,6 @@
 package services
 
-import "github.com/markitos-es/markitos-svc-boilerplates-grpc/internal/domain"
+import "markitos-svc-boilerplates-grpc/internal/domain"
 
 type BoilerplateUpdateRequest struct {
 	Id   string `json:"id" binding:"required"`

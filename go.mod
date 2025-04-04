@@ -1,4 +1,4 @@
-module github.com/markitos-es/markitos-svc-boilerplates-grpc
+module markitos-svc-boilerplates-grpc
 
 go 1.24.1
 
